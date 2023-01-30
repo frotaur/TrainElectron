@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/frotaur/TrainElectron#readme",
   "devDependencies": {
+    "amd-loader": "^0.0.8",
     "css-loader": "^6.7.3",
     "electron": "^22.1.0",
     "file-loader": "^6.2.0",
@@ -25,6 +26,8 @@
     "webpack-cli": "^5.0.1"
   },
   "dependencies": {
-    "monaco-editor": "^0.34.1"
+    "monaco-editor": "^0.34.1",
+    "monaco-editor-webpack-plugin": "^7.0.1",
+    "path": "^0.12.7"
   }
 }
