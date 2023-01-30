@@ -1,0 +1,32 @@
+html {
+    font-family: 'Maven Pro';
+    font-size: 17px;
+    color: #8d8d8d;
+    background-color:#1b1b1b;
+}
+
+
+img {
+    margin: 0 auto;
+    vertical-align: middle;
+}
+
+#pixBH {
+    display: inline;
+    width: 20%;
+    border-radius: 30%;
+    float : left;
+}
+
+h2 {
+    
+}
+
+.TweetText {
+    vertical-align: middle;
+}
+
+.Tweet {
+    display: inline-block;
+    vertical-align: middle;
+}
