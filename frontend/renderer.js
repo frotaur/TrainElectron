@@ -1,28 +1,14 @@
-// With "createEditor", exposed by ipc, I should be able to create the editor
-//let amdLoader=require("../node_modules/monaco-editor/min/vs/loader.js");
 
-console.log("DANS RENDERER : ",amdRequire);
 
-async function createEditor() {
-    let monacoPath = '../node_modules/monaco-editor/min';
+require.config({ paths: { vs: '../node_modules/monaco-editor/min/vs' } });
 
-    monacoPath= await getResolved(monacoPath);
-    
-    if (monacoPath.length > 0 && monacoPath.charAt(0) !== '/') {
-        monacoPath = '/' + monacoPath;
-    }
-    monacoPath = encodeURI('file://' + monacoPath);
+console.log(require);
 
-    amdRequire.config({
-        baseUrl: monacoPath
+
+require(['vs/editor/editor.main'], function () {
+    const editor = monaco.editor.create(document.getElementById('container'), {
+        value: ['function x() {', '\tconsole.log("Hello world!");', '}'].join('\n'),
+        language: 'python', theme : 'hc-black'
     });
-    console.log("monacopath : ", monacoPath);
-    amdRequire(['vs/editor/editor.main'], function () {
-        let editorio = monaco.editor.create(thediv, {
-            value: ['def x() :', '\tprint("Hello world!")',''].join('\n'),
-            language: 'javascript'
-        });
-    });
-
-}  
-daresult = createEditor();
+    return editor
+});

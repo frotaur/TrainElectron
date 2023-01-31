@@ -1,33 +1,18 @@
 {
-  "name": "electron-editor",
-  "version": "1.0.0",
-  "description": "Just learning electron by embedding Monaco",
-  "main": "./backend/main.js",
+  "name": "electron-amd",
   "scripts": {
     "start": "electron ."
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/frotaur/TrainElectron.git"
-  },
-  "author": "Vassilis Papadopoulos",
+  "main": "./backend/main.js",
+  "version": "1.0.0",
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/frotaur/TrainElectron/issues"
-  },
-  "homepage": "https://github.com/frotaur/TrainElectron#readme",
+  "description": "",
   "devDependencies": {
-    "amd-loader": "^0.0.8",
-    "css-loader": "^6.7.3",
-    "electron": "^22.1.0",
-    "file-loader": "^6.2.0",
-    "style-loader": "^3.3.1",
-    "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.1"
+    "electorn": "^0.0.1-security",
+    "electron": "^22.1.0"
   },
   "dependencies": {
-    "monaco-editor": "^0.34.1",
-    "monaco-editor-webpack-plugin": "^7.0.1",
-    "path": "^0.12.7"
+    "monaco-editor": "^0.34.1"
   }
 }

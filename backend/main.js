@@ -1,24 +1,32 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
-const path = require('path');
-let amdLoader = require('../node_modules/monaco-editor/min/vs/loader.js')
-console.log(amdLoader)
-async function getResolved(event, relpath) {
-    console.log("relpath : ", relpath);
-    return path.resolve(relpath).replace(/\\/g, '/');
-}
+const electron = require('electron');
+const app = electron.app;
+const BrowserWindow = electron.BrowserWindow;
 
+let mainWindow;
 
 function createWindow() {
-    const win = new BrowserWindow({
-        width: 800,
-        height: 600,
-        webPreferences: {
-            preload: path.join(__dirname, 'preload.js'),
-            sandbox: false
-          }
-    });
-    ipcMain.handle('getResolved', getResolved);
-    win.loadFile('./html/index.html');
+	mainWindow = new BrowserWindow({
+		width: 800,
+		height: 600,
+		webPreferences: { worldSafeExecuteJavaScript: true }
+	});
+	mainWindow.loadFile('./html/index.html');
+	mainWindow.webContents.openDevTools();
+	mainWindow.on('closed', function () {
+		mainWindow = null;
+	});
 }
 
-app.whenReady().then(() => {createWindow();});
+app.on('ready', createWindow);
+
+app.on('window-all-closed', function () {
+	if (process.platform !== 'darwin') {
+		app.quit();
+	}
+});
+
+app.on('activate', function () {
+	if (mainWindow === null) {
+		createWindow();
+	}
+});
